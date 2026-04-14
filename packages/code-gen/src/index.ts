@@ -309,42 +309,38 @@ export function generateCSSVariables(canvas: CanvasJSON): string {
 }
 
 export function generateTailwindConfig(canvas: CanvasJSON): string {
-  const config: Record<string, unknown> = {
-    theme: {
-      extend: {},
-    },
-  };
+  const config: any = { theme: { extend: {} } };
 
   if (canvas.tokens?.colors) {
     const colors: Record<string, string> = {};
     for (const [name, token] of Object.entries(canvas.tokens.colors)) {
-      colors[name] = token.value;
+      colors[name] = (token as any).value;
     }
-    config.theme!.extend!.colors = colors;
+    config.theme.extend.colors = colors;
   }
 
   if (canvas.tokens?.typography) {
     const fontSize: Record<string, string> = {};
     for (const [name, token] of Object.entries(canvas.tokens.typography)) {
-      fontSize[name] = `${token.fontSize}px`;
+      fontSize[name] = `${(token as any).fontSize}px`;
     }
-    config.theme!.extend!.fontSize = fontSize;
+    config.theme.extend.fontSize = fontSize;
   }
 
   if (canvas.tokens?.spacing) {
     const spacing: Record<string, string> = {};
     for (const [name, token] of Object.entries(canvas.tokens.spacing)) {
-      spacing[name] = `${token.value}px`;
+      spacing[name] = `${(token as any).value}px`;
     }
-    config.theme!.extend!.spacing = spacing;
+    config.theme.extend.spacing = spacing;
   }
 
   if (canvas.tokens?.radius) {
     const borderRadius: Record<string, string> = {};
     for (const [name, token] of Object.entries(canvas.tokens.radius)) {
-      borderRadius[name] = `${token.value}px`;
+      borderRadius[name] = `${(token as any).value}px`;
     }
-    config.theme!.extend!.borderRadius = borderRadius;
+    config.theme.extend.borderRadius = borderRadius;
   }
 
   return `module.exports = ${JSON.stringify(config, null, 2)}`;

@@ -61,15 +61,15 @@ export function toCSSVariables(tokens: typeof morphoTokens): string {
   return css;
 }
 
-export function toTailwindConfig(tokens: typeof morphoTokens): Record<string, unknown> {
-  const config: Record<string, unknown> = { theme: { extend: {} } };
+export function toTailwindConfig(tokens: typeof morphoTokens): Record<string, any> {
+  const config: any = { theme: { extend: {} } };
   
   if (tokens.colors) {
     const colors: Record<string, string> = {};
     for (const [name, token] of Object.entries(tokens.colors)) {
       colors[name] = token.value;
     }
-    (config.theme as Record<string, unknown>).extend!.colors = colors;
+    config.theme.extend.colors = colors;
   }
   
   if (tokens.spacing) {
@@ -77,7 +77,7 @@ export function toTailwindConfig(tokens: typeof morphoTokens): Record<string, un
     for (const [name, token] of Object.entries(tokens.spacing)) {
       spacing[name] = `${token.value}px`;
     }
-    (config.theme as Record<string, unknown>).extend!.spacing = spacing;
+    config.theme.extend.spacing = spacing;
   }
   
   if (tokens.radius) {
@@ -85,7 +85,7 @@ export function toTailwindConfig(tokens: typeof morphoTokens): Record<string, un
     for (const [name, token] of Object.entries(tokens.radius)) {
       borderRadius[name] = `${token.value}px`;
     }
-    (config.theme as Record<string, unknown>).extend!.borderRadius = borderRadius;
+    config.theme.extend.borderRadius = borderRadius;
   }
   
   return config;

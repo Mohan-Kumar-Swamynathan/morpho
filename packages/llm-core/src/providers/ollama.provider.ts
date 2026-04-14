@@ -8,7 +8,7 @@ export interface OllamaConfig {
 export class OllamaProvider implements LLMProvider {
   readonly id = 'ollama';
   readonly name = 'Ollama';
-  readonly supportsVision = false;
+  supportsVision = false;
   private baseURL: string;
   private model: string;
 
