@@ -1,0 +1,20 @@
+{
+  "name": "@morpho/server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@fastify/cors": "^9.0.0",
+    "@fastify/static": "^7.0.0",
+    "fastify": "^4.26.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  }
+}
