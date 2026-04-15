@@ -4,19 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
-    "lint": "turbo run lint",
-    "test": "turbo run test",
-    "clean": "turbo run clean"
+    "dev": "cd apps/web && npm run dev",
+    "build": "cd apps/web && npm run build",
+    "server": "cd apps/server && npm run dev"
   },
   "devDependencies": {
-    "turbo": "^2.0.0",
     "typescript": "^5.4.0"
-  },
-  "packageManager": "npm@10.0.0",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  }
 }
