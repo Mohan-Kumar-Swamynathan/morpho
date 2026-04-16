@@ -1,8 +1,10 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
 import { Stage, Layer, Rect, Ellipse, Text, Group, Transformer } from 'react-konva';
-import type { KonvaEventObject } from 'konva';
 import { useCanvasStore } from '../store/canvasStore';
-import { generateId } from '../canvas-json/src/index.js';
+
+function generateId(): string {
+  return `node_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+}
 
 interface CanvasNode {
   id: string;
